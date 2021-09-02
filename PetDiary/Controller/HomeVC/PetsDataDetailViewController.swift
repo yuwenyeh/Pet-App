@@ -60,16 +60,16 @@ class PetsDataDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        switch indexPath.row {
-        
-        case 0 :
-        case 1 :
-        case 2 :
-        default:
-            fatalError("Failed to instantiate the table view cell for detail view controller")
-        
-        
-        }
+//        switch indexPath.row {
+//        
+//        case 0 :
+//        case 1 :
+//        case 2 :
+//        default:
+//            fatalError("Failed to instantiate the table view cell for detail view controller")
+//        
+//        
+//        }
         
         
         

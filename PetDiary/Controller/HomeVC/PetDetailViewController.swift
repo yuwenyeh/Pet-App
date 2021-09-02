@@ -24,6 +24,7 @@ class PetDetailViewController: UIViewController {
         tableview.delegate = self
        
         
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -153,15 +154,8 @@ extension PetDetailViewController:UITableViewDelegate,UITableViewDataSource{
             
         default:
         print("testtest")
-        }
-       
-        
+        } 
     }
-    
-    
-    
-    
-    
 }
 
 

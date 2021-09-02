@@ -17,15 +17,23 @@ target 'PetDiary' do
   #handle crash problem
   pod 'Fabric', '~> 1.10.2'
   pod 'Crashlytics', '~> 3.14.0'
+  pod 'Firebase/Database'
   
+  # add JGProgressHUD
+  pod 'JGProgressHUD'
+  
+ 
   
   #add the decodable pod for Firebase
   pod 'FirebaseFirestoreSwift', '8.3.0-beta'
+  pod 'FSCalendar'
+ 
 
   target 'PetDiaryTests' do
     inherit! :search_paths
     # Pods for testing
   end
+  
 
   target 'PetDiaryUITests' do
     # Pods for testing

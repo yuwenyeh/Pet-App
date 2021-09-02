@@ -48,6 +48,7 @@ class GetDataManager {
         var urlComponent = URLComponents(string: "https://maps.googleapis.com/maps/api/geocode/json")!
         
         //URLQueryItem 用URL查詢部分單位名稱Value
+//        let encodurlString = addressStr.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
         urlComponent.queryItems = [
             URLQueryItem(name: "address", value: addressStr),
             URLQueryItem(name: "key", value: "AIzaSyAkuWKHvaRUjTFzv3F7FlkS865vcinsvKw")
@@ -58,6 +59,9 @@ class GetDataManager {
         request.httpMethod = "Get"
         
         URLSession.shared.dataTask(with: request) { (data,response,error) in
+            
+            //let content = String(data: data!, encoding: String.Encoding.utf8)
+           //print(content as Any)
             
             guard error == nil else {
                 print(error!)
@@ -77,19 +81,13 @@ class GetDataManager {
             do{
                 
                 let decoder = JSONDecoder()
+                
                 let result = try decoder.decode(VetPlacemarkData.self, from: data)
                 completion(.success(result))
-                
                 
             }catch {
                 print(error)
             }
-            
         }.resume()
-        
     }
-    
-    
-    
-    
 }

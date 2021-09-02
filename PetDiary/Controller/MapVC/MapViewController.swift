@@ -16,17 +16,21 @@ class MapViewController: UIViewController {
             MapView.delegate = self
         }
     }
+    
+    private lazy var geoCoder:CLGeocoder = {
+        return CLGeocoder()
+    }()
+    
     var myLocationMgr:CLLocationManager!
-    
-    var touchedVet = ""
-    
-    var currentPlaceMarker: CLPlacemark?
+
     
     var mamager = GetDataManager()
     
     var vetPlacemarkInfo :[VetPlacemarkData] = []
     
-    var vetData :[VetData] = [] {
+    var placemarks : [CLPlacemark]?
+    
+    var vetData : [VetData] = [] {
         
         didSet{
             if vetData.isEmpty{
@@ -39,9 +43,13 @@ class MapViewController: UIViewController {
         }
     }
     
-    private lazy var geoColder:CLGeocoder = {
-        return CLGeocoder()
-    }()
+    var vetLatitude: Double = 0.0
+    var vetLongitude: Double = 0.0
+    
+    var touchedVet = ""
+    
+    var currentPlaceMarker: CLPlacemark?
+    
     
     //傳值
     override var preferredStatusBarStyle: UIStatusBarStyle{
@@ -108,10 +116,10 @@ class MapViewController: UIViewController {
     
     func getPlacemarker(){
         
-        for index in 0 ..< vetData.count{
+        for index in 0 ..< self.vetData.count{
             
             //修剪字符的功能
-            let withoutWhitespace = vetData[index].vetAddress.trimmingCharacters(in: .whitespaces)
+            let withoutWhitespace = self.vetData[index].vetAddress.trimmingCharacters(in: .whitespaces)
             
             mamager.getVetPlacemark(addressStr: withoutWhitespace) { [weak self] result in
                 
@@ -127,7 +135,7 @@ class MapViewController: UIViewController {
                     
                     if index == stringSelf.vetData.count - 1 {
                         print("資料ＯＫ")
-                        print(vetPlacemarks)
+                        stringSelf.toFireBase()
                       
                     }
                 case .failure(let error):
@@ -148,8 +156,8 @@ class MapViewController: UIViewController {
             
             switch result {
             
-            case .success(let downloadVetData):
-                self?.setUpPin
+            case .success(_):
+                self?.setUpPin()
                 
             case .failure(let error):
                 print(error)
@@ -218,7 +226,6 @@ class MapViewController: UIViewController {
         default:
             break
         }
-
     }
     
     
@@ -265,7 +272,7 @@ extension MapViewController: CLLocationManagerDelegate{
         print("\(currentLocation.coordinate.latitude)")
         print(" \(currentLocation.coordinate.longitude)")
         
-        geoColder.reverseGeocodeLocation(currentLocation) { (placemarks, _) -> Void in
+        geoCoder.reverseGeocodeLocation(currentLocation) { (placemarks, _) -> Void in
             
             self.currentPlaceMarker = placemarks?.first
         }
@@ -325,9 +332,49 @@ extension MapViewController:MKMapViewDelegate{
         return pinView
     }
     
-    @objc func infoDetail(){
+    @objc func infoDetail() {
+        let alertController = UIAlertController(title: "選擇功能", message: nil, preferredStyle: .actionSheet)
+        let guideAction = UIAlertAction(title: "導航路線", style: .default) { (_) in
+            self.guideToVet(destination: self.touchedVet)
+        }
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alertController.addAction(guideAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        touchedVet = (view.annotation?.subtitle ?? "") ?? ""
+    }
+    
+    func guideToVet(destination: String) {
         
-        print("MapView data")
-        
+        self.geoCoder.geocodeAddressString(destination) { (place: [CLPlacemark]?, _) -> Void in
+            
+            guard let currentPlaceMarker = self.currentPlaceMarker,
+                  let destination = place?.first
+            else {
+                    return
+            }
+            self.beginGuide(currentPlaceMarker, endPLCL: destination)
+        }
+    }
+    
+    // - 導航 -
+    func beginGuide(_ startPLCL: CLPlacemark, endPLCL: CLPlacemark) {
+        let startplMK: MKPlacemark = MKPlacemark(placemark: startPLCL)
+        let startItem: MKMapItem = MKMapItem(placemark: startplMK)
+        let endplMK: MKPlacemark = MKPlacemark(placemark: endPLCL)
+        let endItem: MKMapItem = MKMapItem(placemark: endplMK)
+        let mapItems: [MKMapItem] = [startItem, endItem]
+        let dic: [String: AnyObject] = [
+            // 導航模式:駕駛
+            MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving as AnyObject,
+            // 地圖樣式：標準樣式
+            MKLaunchOptionsMapTypeKey: MKMapType.standard.rawValue as AnyObject,
+            // 顯示交通：顯示
+            MKLaunchOptionsShowsTrafficKey: true as AnyObject]
+        // 依據 MKMapItem 的起點和終點組成數組, 通過導航地圖啟動參數字典, 調用系統地圖進行導航
+        MKMapItem.openMaps(with: mapItems, launchOptions: dic)
     }
 }

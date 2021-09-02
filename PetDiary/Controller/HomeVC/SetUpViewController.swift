@@ -13,6 +13,9 @@ class SetUpViewController: UIViewController{
     
     let names = ["有無廣告","版本：","圖樣選擇"]
     
+   
+    
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +30,8 @@ class SetUpViewController: UIViewController{
         
         tableview.sectionHeaderHeight = 40
     }
+    
+
     
     
 }

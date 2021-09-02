@@ -5,12 +5,18 @@
 //  Created by etrovision on 2021/8/24.
 //
 
+protocol PetDelegate:AnyObject {
+    
+    func Petdata(PetName:String)
+}
+
 import UIKit
 
 class PettypeViewController: UIViewController {
 
     @IBOutlet weak var tableview: UITableView!
     
+    var petnamedelegate: PetDelegate?
   
     var PetName = ["未選取","狗","貓","倉鼠","雪貂","兔子","小鸚鵡","貓頭鷹","松鼠","烏龜","青蛙","觀賞魚","蜥蜴","其他"]
     
@@ -21,8 +27,6 @@ class PettypeViewController: UIViewController {
         tableview.tableFooterView = UIView(frame: CGRect.zero)
         
     }
-    
-
 
 }
 extension PettypeViewController:UITableViewDelegate,UITableViewDataSource{
@@ -38,6 +42,12 @@ extension PettypeViewController:UITableViewDelegate,UITableViewDataSource{
         let cell = tableview.dequeueReusableCell(withIdentifier: "pettypeCell", for: indexPath)
         cell.textLabel?.text = PetName[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        petnamedelegate?.Petdata(PetName: PetName[indexPath.row])
+        self.navigationController?.popViewController(animated: true)
     }
     
     

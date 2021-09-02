@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 
+//                let OK = UIAlertAction.addAction(title: "OK", style: .default, handler: nil)
+//                UIAlertController.showAlertController(title: "無鏡頭可用", msg: "Oops!", style: .alert, actions: [OK])
+
 extension UIViewController {
     
     class func getCurrentVC() ->UIViewController?{

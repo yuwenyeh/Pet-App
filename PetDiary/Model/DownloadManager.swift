@@ -26,6 +26,10 @@ class DownloadManager {
     
     var vetPlacemark = [VetDataToDB]()
     
+    var petData : [PetData] = []
+    
+    
+ 
     
     func downloadVetPlacemark(completion: @escaping (Result<[VetDataToDB], Error>)->Void){
         

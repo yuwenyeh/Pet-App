@@ -10,7 +10,21 @@ import UIKit
 class MyPetDetailCell: UITableViewCell {
 
 
-
+    @IBOutlet weak var homePetImage: UIImageView!
+    
+    @IBOutlet weak var homePetName: UILabel!
+    
+    @IBOutlet weak var homePetMessageLabel: UILabel!
+    
+    
+    func configureCell(homePetImage:UIImage,homePetName:String,homePetMessageLabel:String) {
+        self.homePetImage.image = homePetImage
+        self.homePetName.text = homePetName
+        self.homePetMessageLabel.text = homePetMessageLabel
+  
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -60,16 +60,22 @@ class PetsDataDetailViewController: UIViewController, UITableViewDelegate, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-//        switch indexPath.row {
-//        
-//        case 0 :
-//        case 1 :
-//        case 2 :
-//        default:
-//            fatalError("Failed to instantiate the table view cell for detail view controller")
-//        
-//        
-//        }
+        switch indexPath.row {
+        
+        case 0 :
+            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing:PetsDataDetailCell.self), for: indexPath) as! PetsDataDetailCell
+            cell.iconImageView.image = UIImage(named: "dogFootprints")?.withTintColor(#colorLiteral(red: 0.6156309247, green: 0.6157218814, blue: 0.6156109571, alpha: 1), renderingMode: .alwaysOriginal)
+            return cell
+        case 1 :
+            
+            print("")
+        case 2 :
+            print("")
+        default:
+            fatalError("Failed to instantiate the table view cell for detail view controller")
+        
+        
+        }
         
         
         

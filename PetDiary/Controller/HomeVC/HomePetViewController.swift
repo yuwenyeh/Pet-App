@@ -62,7 +62,6 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     }
     
 
-    
     func addtableview(){
         
         self.tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -73,6 +72,29 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
              .textColor = UIColor.gray
          UILabel.appearance(whenContainedInInstancesOf: [UITableViewHeaderFooterView.self])
              .font = UIFont.systemFont(ofSize: 13.0, weight: UIFont.Weight.medium)
+    }
+    
+    //MARK: -Table view delegate
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { ( action, sourceView, completionHandler)  in
+            
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
+                let context = appDelegate.persistentContainer.viewContext
+                let restaurantToDelete = self.fetchResultController.object(at: indexPath)
+                context.delete(restaurantToDelete)
+                appDelegate.saveContext()
+            }
+            completionHandler(true)
+        }
+        
+        // Customize the color
+        deleteAction.backgroundColor = UIColor(red: 231/255, green: 76/255, blue: 6/255, alpha: 0.5)
+        deleteAction.image = UIImage(systemName: "trash")
+        
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        return swipeConfiguration
+        
     }
     
     

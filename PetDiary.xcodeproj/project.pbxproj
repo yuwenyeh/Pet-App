@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FAFF46926E7130D00888BE7 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF46826E7130D00888BE7 /* HomeCell.swift */; };
 		0FCACF2B26D39FA30090024D /* AlertController +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF2A26D39FA30090024D /* AlertController +Extension.swift */; };
 		0FCACF3026D49DB50090024D /* PettypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF2F26D49DB50090024D /* PettypeViewController.swift */; };
 		0FCACF3226D4A7600090024D /* HomePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF3126D4A7600090024D /* HomePetViewController.swift */; };
@@ -68,6 +69,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FAFF46826E7130D00888BE7 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		0FCACF2A26D39FA30090024D /* AlertController +Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController +Extension.swift"; sourceTree = "<group>"; };
 		0FCACF2F26D49DB50090024D /* PettypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PettypeViewController.swift; sourceTree = "<group>"; };
 		0FCACF3126D4A7600090024D /* HomePetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetViewController.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				0FCACF5126E0C2EE0090024D /* PetDetailHeaderView.swift */,
 				0FCACF5326E0CB840090024D /* PetsDataDetailCell.swift */,
 				0FCACF5526E0CF450090024D /* PetsDetailMessageLabel.swift */,
+				0FAFF46826E7130D00888BE7 /* HomeCell.swift */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -606,6 +609,7 @@
 				D88EF2C326D457BF00B7C9D7 /* PetTextFieldVC.swift in Sources */,
 				0FCACF3226D4A7600090024D /* HomePetViewController.swift in Sources */,
 				D8FDC4D026D2523D00EA1026 /* PetDetailCell.swift in Sources */,
+				0FAFF46926E7130D00888BE7 /* HomeCell.swift in Sources */,
 				0FCACF4326D627990090024D /* UploadManager.swift in Sources */,
 				0FCACF3926D5D6B50090024D /* MapViewController.swift in Sources */,
 				0FCACF5626E0CF450090024D /* PetsDetailMessageLabel.swift in Sources */,

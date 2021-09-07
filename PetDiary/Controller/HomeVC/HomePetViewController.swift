@@ -12,18 +12,16 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     
     var petDiarys :[PetDiaryMO] = []
     var fetchResultController : NSFetchedResultsController<PetDiaryMO>!
-
+    let cellResuIndextifier = "HCell"
     
     @IBOutlet var tableview: UITableView!
-    @IBOutlet weak var titleCell: UILabel!
-    @IBOutlet weak var DetailCell: UILabel!
-    @IBOutlet weak var imageCell: UIImageView!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
- 
+     // self.tableview.register(HomeCell.self, forCellReuseIdentifier: cellResuIndextifier)
+        
         let fetchRequerst : NSFetchRequest<PetDiaryMO> = PetDiaryMO.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
         fetchRequerst.sortDescriptors = [sortDescriptor]
@@ -46,11 +44,7 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
        addtableview()
       
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        //navigationController?.hidesBarsOnSwipe = true
-    }
+  
     
     
     
@@ -92,7 +86,6 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         deleteAction.image = UIImage(systemName: "trash")
         
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
-        
         return swipeConfiguration
         
     }
@@ -109,27 +102,30 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
       
+        //用重用的方式获取标识为wifiCell的cell
+       
         //只有第二个分区是动态的，其它默认
         if indexPath.section == 1{
-            
-            //用重用的方式获取标识为wifiCell的cell
-           var cell = tableView.dequeueReusableCell(withIdentifier: "wifiCell")
-            if cell == nil {
-                cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "wifiCell")
-            }
-           
-            cell?.textLabel?.text = petDiarys[indexPath.row].name
-            cell?.detailTextLabel?.text = petDiarys[indexPath.row].birday
-            if let petDiaryImage = petDiarys[indexPath.row].image {
-                cell?.imageView?.image = UIImage(data: petDiaryImage as Data)
-            }
-            return cell!
+            //let cells = tableView.dequeueReusableCell(withIdentifier: cellResuIndextifier) as! HomeCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellResuIndextifier) as! HomeCell
+//            if cell == nil {
+//                cell = UITableViewCell.init(style: UITableViewCell.CellStyle.subtitle, reuseIdentifier: "HomeCell") as! HomeCell
+//            }
+     
+            cell.titleLabel.text = "123"
+//            cell.textLabel?.text = petDiarys[indexPath.row].name
+//            cell?.detailTextLabel?.text = petDiarys[indexPath.row].birday
+//            if let petDiaryImage = petDiarys[indexPath.row].image {
+//                cell?.imageView?.image = UIImage(data: petDiaryImage as Data)
+//                cell?.imageView?.layer.cornerRadius = (cell?.imageView?.frame.width)!/2
+//                cell?.imageView?.clipsToBounds = true
+//            }
+            return cell
             
         }else{
             return super.tableView(tableView,cellForRowAt: indexPath)

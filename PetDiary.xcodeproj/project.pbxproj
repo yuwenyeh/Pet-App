@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0FAFF46926E7130D00888BE7 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF46826E7130D00888BE7 /* HomeCell.swift */; };
+		0FAFF46E26E84F0400888BE7 /* HomesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF46C26E84F0400888BE7 /* HomesCell.swift */; };
+		0FAFF46F26E84F0400888BE7 /* HomesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FAFF46D26E84F0400888BE7 /* HomesCell.xib */; };
+		0FAFF47326E889AA00888BE7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF47226E889AA00888BE7 /* CardView.swift */; };
 		0FCACF2B26D39FA30090024D /* AlertController +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF2A26D39FA30090024D /* AlertController +Extension.swift */; };
 		0FCACF3026D49DB50090024D /* PettypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF2F26D49DB50090024D /* PettypeViewController.swift */; };
 		0FCACF3226D4A7600090024D /* HomePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF3126D4A7600090024D /* HomePetViewController.swift */; };
@@ -69,7 +71,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0FAFF46826E7130D00888BE7 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		0FAFF46C26E84F0400888BE7 /* HomesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesCell.swift; sourceTree = "<group>"; };
+		0FAFF46D26E84F0400888BE7 /* HomesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomesCell.xib; sourceTree = "<group>"; };
+		0FAFF47226E889AA00888BE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		0FCACF2A26D39FA30090024D /* AlertController +Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController +Extension.swift"; sourceTree = "<group>"; };
 		0FCACF2F26D49DB50090024D /* PettypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PettypeViewController.swift; sourceTree = "<group>"; };
 		0FCACF3126D4A7600090024D /* HomePetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +163,7 @@
 			children = (
 				0FCACF2A26D39FA30090024D /* AlertController +Extension.swift */,
 				D8FDC4D426D27FA300EA1026 /* UIViewController+Extension.swift */,
+				0FAFF47226E889AA00888BE7 /* CardView.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -305,7 +310,8 @@
 				0FCACF5126E0C2EE0090024D /* PetDetailHeaderView.swift */,
 				0FCACF5326E0CB840090024D /* PetsDataDetailCell.swift */,
 				0FCACF5526E0CF450090024D /* PetsDetailMessageLabel.swift */,
-				0FAFF46826E7130D00888BE7 /* HomeCell.swift */,
+				0FAFF46C26E84F0400888BE7 /* HomesCell.swift */,
+				0FAFF46D26E84F0400888BE7 /* HomesCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -445,6 +451,7 @@
 			files = (
 				D88DBA4326CFFB9F0009BAE9 /* LaunchScreen.storyboard in Resources */,
 				D88DBA4026CFFB9F0009BAE9 /* Assets.xcassets in Resources */,
+				0FAFF46F26E84F0400888BE7 /* HomesCell.xib in Resources */,
 				D88DBA3B26CFFB9E0009BAE9 /* Main.storyboard in Resources */,
 				D88EF2C126D453F800B7C9D7 /* Home.storyboard in Resources */,
 				0FCACF6526E0DCFE0090024D /* GoogleService-Info.plist in Resources */,
@@ -599,6 +606,7 @@
 				0FCACF5826E0D2850090024D /* UINavigationContyroller+Ext.swift in Sources */,
 				D8891A8B26D06C0C00355F21 /* SetUpViewController.swift in Sources */,
 				D8FDC4D526D27FA300EA1026 /* UIViewController+Extension.swift in Sources */,
+				0FAFF46E26E84F0400888BE7 /* HomesCell.swift in Sources */,
 				D8891A9126D0785700355F21 /* PetDetailViewController.swift in Sources */,
 				D88DBA3626CFFB9E0009BAE9 /* SceneDelegate.swift in Sources */,
 				D8847DA126D78110008B2BA4 /* BirtydayViewController.swift in Sources */,
@@ -609,7 +617,6 @@
 				D88EF2C326D457BF00B7C9D7 /* PetTextFieldVC.swift in Sources */,
 				0FCACF3226D4A7600090024D /* HomePetViewController.swift in Sources */,
 				D8FDC4D026D2523D00EA1026 /* PetDetailCell.swift in Sources */,
-				0FAFF46926E7130D00888BE7 /* HomeCell.swift in Sources */,
 				0FCACF4326D627990090024D /* UploadManager.swift in Sources */,
 				0FCACF3926D5D6B50090024D /* MapViewController.swift in Sources */,
 				0FCACF5626E0CF450090024D /* PetsDetailMessageLabel.swift in Sources */,
@@ -623,6 +630,7 @@
 				D8FDC4CC26D2249600EA1026 /* TitleLabelCell.swift in Sources */,
 				D8847D9F26D7662D008B2BA4 /* RecordViewController.swift in Sources */,
 				0FCACF5226E0C2EE0090024D /* PetDetailHeaderView.swift in Sources */,
+				0FAFF47326E889AA00888BE7 /* CardView.swift in Sources */,
 				D8891A8D26D06FB200355F21 /* PetInformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

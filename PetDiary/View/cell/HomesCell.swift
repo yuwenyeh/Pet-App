@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol HomeCellDelegate {
+    func deleteButtonSH(str:String)
+}
+
 class HomesCell: UITableViewCell {
 
+  
 
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var HomeImage: UIImageView!
@@ -51,6 +56,11 @@ class HomesCell: UITableViewCell {
         self.separatorInset = UIEdgeInsets(top: 0, left: self.bounds.size.width, bottom: 0, right: 0)
     }
     
+    @IBAction func deleteBtn(_ sender: UIButton) {
+        
+    }
     
     
+ 
 }
+

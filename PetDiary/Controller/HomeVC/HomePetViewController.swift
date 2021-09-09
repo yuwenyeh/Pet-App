@@ -8,12 +8,16 @@
 import UIKit
 import CoreData
 
-class HomePetViewController: UITableViewController,NSFetchedResultsControllerDelegate {
+
+
+
+class HomePetViewController: UITableViewController,NSFetchedResultsControllerDelegate{
+ 
     
     var petDiarys :[PetDiaryMO] = []
     var fetchResultController : NSFetchedResultsController<PetDiaryMO>!
     let cellResuIndextifier = "HomesCell"
-    
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,28 +73,6 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     }
     
     
-    //MARK: -Table view delegate
-//    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { ( action, sourceView, completionHandler)  in
-//
-//            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-//                let context = appDelegate.persistentContainer.viewContext
-//                let restaurantToDelete = self.fetchResultController.object(at: indexPath)
-//                context.delete(restaurantToDelete)
-//                appDelegate.saveContext()
-//            }
-//            completionHandler(true)
-//        }
-//
-//        // Customize the color
-//        deleteAction.backgroundColor = UIColor(red: 231/255, green: 76/255, blue: 6/255, alpha: 0.5)
-//        deleteAction.image = UIImage(systemName: "trash")
-//
-//        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
-//        return swipeConfiguration
-//
-//    }
-    
     
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -106,7 +88,9 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
             cell?.messageLabel.text = petDiarys[indexPath.row].message
             if let petDiaryImage = petDiarys[indexPath.row].image {
                 cell?.HomeImage.image = UIImage(data: petDiaryImage as Data)
+                
             }
+           
             return cell!
         }
         return super.tableView(tableView, cellForRowAt: indexPath)
@@ -214,5 +198,11 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         tableView.endUpdates()
     }
     
+    
+    @IBAction func onChange(_ sender: UISegmentedControl) {
+        
+        print(sender.titleForSegment(at: sender.selectedSegmentIndex)!)
+       
+    }
     
 }

@@ -276,9 +276,12 @@
                                                     <segments>
                                                         <segment title="輸入"/>
                                                         <segment title="詳情"/>
-                                                        <segment title=""/>
+                                                        <segment title="測試"/>
                                                         <segment title="編輯"/>
                                                     </segments>
+                                                    <connections>
+                                                        <action selector="onChange:" destination="Ypl-Oe-7m3" eventType="valueChanged" id="HeV-zG-Pxx"/>
+                                                    </connections>
                                                 </segmentedControl>
                                             </subviews>
                                             <constraints>

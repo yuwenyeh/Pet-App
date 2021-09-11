@@ -60,7 +60,9 @@
                                             <constraint firstAttribute="width" constant="80" id="4RL-sa-C1Y"/>
                                             <constraint firstAttribute="height" constant="80" id="I6T-jm-ckX"/>
                                         </constraints>
-                                        <state key="normal" title="Button"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="0.8941428065" green="0.0078667141500000006" blue="0.31371229890000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="deleteBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WVb-uE-jo9"/>
                                         </connections>

@@ -10,6 +10,11 @@
 		0FAFF46E26E84F0400888BE7 /* HomesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF46C26E84F0400888BE7 /* HomesCell.swift */; };
 		0FAFF46F26E84F0400888BE7 /* HomesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FAFF46D26E84F0400888BE7 /* HomesCell.xib */; };
 		0FAFF47326E889AA00888BE7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF47226E889AA00888BE7 /* CardView.swift */; };
+		0FAFF47726EC79EE00888BE7 /* HomCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF47626EC79EE00888BE7 /* HomCounter.swift */; };
+		0FAFF47926EC8B0D00888BE7 /* PetsCategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF47826EC8B0D00888BE7 /* PetsCategoryVC.swift */; };
+		0FAFF48126EC9D2000888BE7 /* PetwCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF47F26EC9D2000888BE7 /* PetwCategoryCell.swift */; };
+		0FAFF48226EC9D2000888BE7 /* PetwCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FAFF48026EC9D2000888BE7 /* PetwCategoryCell.xib */; };
+		0FAFF48426ECA9C800888BE7 /* PetSetUpTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF48326ECA9C800888BE7 /* PetSetUpTableVC.swift */; };
 		0FCACF2B26D39FA30090024D /* AlertController +Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF2A26D39FA30090024D /* AlertController +Extension.swift */; };
 		0FCACF3026D49DB50090024D /* PettypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF2F26D49DB50090024D /* PettypeViewController.swift */; };
 		0FCACF3226D4A7600090024D /* HomePetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCACF3126D4A7600090024D /* HomePetViewController.swift */; };
@@ -74,6 +79,11 @@
 		0FAFF46C26E84F0400888BE7 /* HomesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesCell.swift; sourceTree = "<group>"; };
 		0FAFF46D26E84F0400888BE7 /* HomesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomesCell.xib; sourceTree = "<group>"; };
 		0FAFF47226E889AA00888BE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		0FAFF47626EC79EE00888BE7 /* HomCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomCounter.swift; sourceTree = "<group>"; };
+		0FAFF47826EC8B0D00888BE7 /* PetsCategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsCategoryVC.swift; sourceTree = "<group>"; };
+		0FAFF47F26EC9D2000888BE7 /* PetwCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetwCategoryCell.swift; sourceTree = "<group>"; };
+		0FAFF48026EC9D2000888BE7 /* PetwCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PetwCategoryCell.xib; sourceTree = "<group>"; };
+		0FAFF48326ECA9C800888BE7 /* PetSetUpTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetSetUpTableVC.swift; sourceTree = "<group>"; };
 		0FCACF2A26D39FA30090024D /* AlertController +Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController +Extension.swift"; sourceTree = "<group>"; };
 		0FCACF2F26D49DB50090024D /* PettypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PettypeViewController.swift; sourceTree = "<group>"; };
 		0FCACF3126D4A7600090024D /* HomePetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePetViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +168,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FAFF47A26EC8B3900888BE7 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				0FAFF47826EC8B0D00888BE7 /* PetsCategoryVC.swift */,
+				0FAFF48326ECA9C800888BE7 /* PetSetUpTableVC.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		0FCACF2C26D39FBE0090024D /* Alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +211,7 @@
 		D8735D6326D5509C00292DA8 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
+				0FAFF47A26EC8B3900888BE7 /* Category */,
 				D8891A8C26D06FB200355F21 /* PetInformationViewController.swift */,
 				0FCACF3126D4A7600090024D /* HomePetViewController.swift */,
 				D8891A8A26D06C0C00355F21 /* SetUpViewController.swift */,
@@ -312,6 +332,8 @@
 				0FCACF5526E0CF450090024D /* PetsDetailMessageLabel.swift */,
 				0FAFF46C26E84F0400888BE7 /* HomesCell.swift */,
 				0FAFF46D26E84F0400888BE7 /* HomesCell.xib */,
+				0FAFF47F26EC9D2000888BE7 /* PetwCategoryCell.swift */,
+				0FAFF48026EC9D2000888BE7 /* PetwCategoryCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -325,6 +347,7 @@
 				0FCACF4226D627990090024D /* UploadManager.swift */,
 				0FCACF4626D635420090024D /* DownloadManager.swift */,
 				0FCACF5726E0D2850090024D /* UINavigationContyroller+Ext.swift */,
+				0FAFF47626EC79EE00888BE7 /* HomCounter.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -449,6 +472,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FAFF48226EC9D2000888BE7 /* PetwCategoryCell.xib in Resources */,
 				D88DBA4326CFFB9F0009BAE9 /* LaunchScreen.storyboard in Resources */,
 				D88DBA4026CFFB9F0009BAE9 /* Assets.xcassets in Resources */,
 				0FAFF46F26E84F0400888BE7 /* HomesCell.xib in Resources */,
@@ -623,15 +647,19 @@
 				0FCACF4726D635420090024D /* DownloadManager.swift in Sources */,
 				0FCACF5026E0AD7F0090024D /* PetsDataDetailViewController.swift in Sources */,
 				0FCACF3B26D5EA630090024D /* GetDataManager.swift in Sources */,
+				0FAFF48426ECA9C800888BE7 /* PetSetUpTableVC.swift in Sources */,
 				D8FDC4C826D1D17400EA1026 /* SetUpCell.swift in Sources */,
 				D88EF2C526D4676300B7C9D7 /* MyPetDetailCell.swift in Sources */,
 				D8AF2E1426D3E6E700720912 /* MyPetDetailViewController.swift in Sources */,
 				D88DBA3E26CFFB9E0009BAE9 /* PetDiary.xcdatamodeld in Sources */,
 				D8FDC4CC26D2249600EA1026 /* TitleLabelCell.swift in Sources */,
+				0FAFF47926EC8B0D00888BE7 /* PetsCategoryVC.swift in Sources */,
 				D8847D9F26D7662D008B2BA4 /* RecordViewController.swift in Sources */,
+				0FAFF48126EC9D2000888BE7 /* PetwCategoryCell.swift in Sources */,
 				0FCACF5226E0C2EE0090024D /* PetDetailHeaderView.swift in Sources */,
 				0FAFF47326E889AA00888BE7 /* CardView.swift in Sources */,
 				D8891A8D26D06FB200355F21 /* PetInformationViewController.swift in Sources */,
+				0FAFF47726EC79EE00888BE7 /* HomCounter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,15 +18,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
        
-       // FirebaseApp.configure()
+
         let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "Tab Bar Controller") as? UITabBarController
         window?.rootViewController = viewController
        
-        let backButtonImage = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
-        UINavigationBar.appearance().backIndicatorImage = backButtonImage
-        UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
+
+        let navigationBarAppearace = UINavigationBar.appearance()
+        navigationBarAppearace.tintColor = .white
+        navigationBarAppearace.barTintColor = #colorLiteral(red: 0.8941428065, green: 0.00786671415, blue: 0.3137122989, alpha: 1)
         
-        UIApplication.shared.statusBarStyle = .lightContent
+        // let backButtonImage = UIImage(systemName: "arrow.left", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))
+        //UINavigationBar.appearance().backIndicatorImage = backButtonImage
+        //UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
+        //UIApplication.shared.statusBarStyle = .lightContent
        
         
         return true

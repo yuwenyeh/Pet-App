@@ -9,16 +9,19 @@ import UIKit
 import CoreData
 
 
-
+let PETSDATADETAILVC = "PetsDataDetailVC"
+let cellResuIndextifier = "HomesCell"
 
 class HomePetViewController: UITableViewController,NSFetchedResultsControllerDelegate{
- 
+    
     
     var petDiarys :[PetDiaryMO] = []
-    var fetchResultController : NSFetchedResultsController<PetDiaryMO>!
-    let cellResuIndextifier = "HomesCell"
    
-
+    let homecounter: HomCounter = HomCounter()
+    @IBOutlet weak var onSegmentControl: UISegmentedControl!
+    var fetchResultController : NSFetchedResultsController<PetDiaryMO>!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +29,11 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         let nib = UINib(nibName: cellResuIndextifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellResuIndextifier)
         
+        appdelegate()
+        addtableview()
+    }
+    
+    func appdelegate(){
         
         let fetchRequerst : NSFetchRequest<PetDiaryMO> = PetDiaryMO.fetchRequest()
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
@@ -33,12 +41,13 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         
         //建立讀取請求
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate) {
-            let context = appDelegate.persistentContainer.viewContext
             
+            let context = appDelegate.persistentContainer.viewContext
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequerst, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
             do {
+                
                 try fetchResultController.performFetch()
                 if let fetchedObjects = fetchResultController.fetchedObjects {
                     petDiarys = fetchedObjects
@@ -47,20 +56,10 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
                 print(error)
             }
         }
-        addtableview()
     }
     
     
-    
-    
-    @IBAction func addPetData(_ sender: Any) {
-        
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.tableView.insertRows(at: [indexPath], with: .automatic)
-        
-    }
-    
-    
+
     func addtableview(){
         
         //去除尾部多余的空行
@@ -73,8 +72,6 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     }
     
     
-    
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -83,14 +80,15 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         
         if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellResuIndextifier) as? HomesCell
+            
+            cell?.delegate = self
             cell?.nameLabel.text = petDiarys[indexPath.row].name
             cell?.birLabel.text = petDiarys[indexPath.row].birday
             cell?.messageLabel.text = petDiarys[indexPath.row].message
+            
             if let petDiaryImage = petDiarys[indexPath.row].image {
                 cell?.HomeImage.image = UIImage(data: petDiaryImage as Data)
-                
             }
-           
             return cell!
         }
         return super.tableView(tableView, cellForRowAt: indexPath)
@@ -112,10 +110,8 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     override func tableView(_ tableView: UITableView, indentationLevelForRowAt indexPath: IndexPath) -> Int {
         
         if indexPath.section == 1 {
-            
             return super.tableView(tableView, indentationLevelForRowAt: IndexPath(row: 0, section: 1))
         }
-        
         return super.tableView(tableView, indentationLevelForRowAt: indexPath)
     }
     
@@ -126,7 +122,6 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         if indexPath.section == 1 {
             return 100
         }
-        
         return 44
     }
     
@@ -139,14 +134,18 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     
     //點擊動態Cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-  
-        if indexPath.section == 1 {
+        
+        tableView.deselectRow(at: indexPath, animated: false)
+        if indexPath.section == 0 {
             
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: "PetsDataDetailVC") as! PetsDataDetailViewController
-            controller.petDiarys = petDiarys[indexPath.row]
-            self.navigationController?.pushViewController(controller, animated: true)
-            
+        }
+        
+        if indexPath == [0,0] {
+           
+            let storyboard = UIStoryboard(name: "Home", bundle: nil)
+             let controller = storyboard.instantiateViewController(withIdentifier: "PetsCategoryVC") as! PetsCategoryVC
+           self.navigationController?.show(controller, sender: true)
+   
         }
     }
     
@@ -155,34 +154,30 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         super.didReceiveMemoryWarning()
     }
     
-    
+    @IBAction func addPetData(_ sender: Any) {
+        
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.tableView.insertRows(at: [indexPath], with: .automatic)
+    }
     
     @IBAction func unwindToEditEvent(segue: UIStoryboardSegue) {
         dismiss(animated: true, completion: nil)
     }
     
-    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.beginUpdates()
-    }
+ 
     
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
-        
         
         switch type {
         case .insert:
             let index = IndexPath(row:newIndexPath!.row, section: 1)
             tableView.insertRows(at: [index], with: .fade)
             
-        case .delete:
-          let index =  IndexPath(row: indexPath!.row, section: 1)
-            tableView.deleteRows(at: [index], with: .fade)
-    
         case .update:
             
             let index = IndexPath(row: indexPath!.row, section: 1)
-           
-                tableView.reloadRows(at: [index], with: .fade)
+            tableView.reloadRows(at: [index], with: .fade)
             
         default:
             tableView.reloadData()
@@ -194,6 +189,10 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         
     }
     
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
@@ -201,8 +200,21 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     
     @IBAction func onChange(_ sender: UISegmentedControl) {
         
-        print(sender.titleForSegment(at: sender.selectedSegmentIndex)!)
-       
+        if let btntitle = sender.titleForSegment(at: sender.selectedSegmentIndex){
+            homecounter.homeCounter(str: btntitle)
+        }
     }
-    
+}
+
+
+
+extension HomePetViewController: MyTableviewCellDelegate {
+    func didTapMyBtn(sender: HomesCell) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let indexPath = self.tableView.indexPath(for: sender) else {return }
+        let controller = storyboard.instantiateViewController(withIdentifier: PETSDATADETAILVC) as! PetsDataDetailViewController
+        controller.petDiarys = petDiarys[indexPath.row]
+        self.navigationController?.pushViewController(controller, animated: true)
+    }
 }

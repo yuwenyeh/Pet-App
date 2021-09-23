@@ -7,7 +7,8 @@
 
 import UIKit
 import CoreData
-
+import Firebase
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -31,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UINavigationBar.appearance().backIndicatorImage = backButtonImage
         //UINavigationBar.appearance().backIndicatorTransitionMaskImage = backButtonImage
         //UIApplication.shared.statusBarStyle = .lightContent
-       
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        FirebaseApp.configure()
         
         return true
   

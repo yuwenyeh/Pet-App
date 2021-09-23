@@ -37,6 +37,9 @@ target 'PetDiary' do
 
   target 'PetDiaryUITests' do
     # Pods for testing
+    
+    # Pods for Google_Ads
+    pod 'Google-Mobile-Ads-SDK'
   end
 
 end

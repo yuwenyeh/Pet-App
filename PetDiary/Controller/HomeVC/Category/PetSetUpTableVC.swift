@@ -25,7 +25,6 @@ class PetSetUpTableVC: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return super.tableView(tableView, numberOfRowsInSection: section)
     }
 

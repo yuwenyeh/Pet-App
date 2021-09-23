@@ -7,6 +7,8 @@
 
 import UIKit
 import CoreData
+import GoogleMobileAds
+
 
 
 let PETSDATADETAILVC = "PetsDataDetailVC"
@@ -14,7 +16,7 @@ let cellResuIndextifier = "HomesCell"
 
 class HomePetViewController: UITableViewController,NSFetchedResultsControllerDelegate{
     
-    
+    var bannerView :GADBannerView!
     var petDiarys :[PetDiaryMO] = []
    
     let homecounter: HomCounter = HomCounter()
@@ -25,13 +27,45 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //廣告view要先擺上面
+        bannerView = GADBannerView(adSize: kGADAdSizeBanner)
+        addBannerViewToView(bannerView)
         
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"//測試apple ID
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+        bannerView.delegate = self
+        
+        //在畫view
         let nib = UINib(nibName: cellResuIndextifier, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellResuIndextifier)
-        
+        self.tableView.alwaysBounceVertical = true
+        self.tableView.bounces = false//靜止彈跳
         appdelegate()
         addtableview()
+        
     }
+    
+    func addBannerViewToView(_ bannerView: GADBannerView) {
+       bannerView.translatesAutoresizingMaskIntoConstraints = false
+       view.addSubview(bannerView)
+       view.addConstraints(
+         [NSLayoutConstraint(item: bannerView,
+                             attribute: .bottom,
+                             relatedBy: .equal,
+                             toItem: bottomLayoutGuide,
+                             attribute: .top,
+                             multiplier: 1,
+                             constant: 0),
+          NSLayoutConstraint(item: bannerView,
+                             attribute: .centerX,
+                             relatedBy: .equal,
+                             toItem: view,
+                             attribute: .centerX,
+                             multiplier: 1,
+                             constant: 0)
+         ])
+      }
     
     func appdelegate(){
         
@@ -45,7 +79,6 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
             let context = appDelegate.persistentContainer.viewContext
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequerst, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
-            
             do {
                 
                 try fetchResultController.performFetch()
@@ -57,7 +90,6 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
             }
         }
     }
-    
     
 
     func addtableview(){
@@ -125,12 +157,7 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         return 44
     }
     
-    
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 1
-    }
-    
-    
+
     
     //點擊動態Cell
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -149,13 +176,13 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+   
+    
     @IBAction func addPetData(_ sender: Any) {
-        
         let indexPath = IndexPath(row: 0, section: 0)
         self.tableView.insertRows(at: [indexPath], with: .automatic)
     }
@@ -164,9 +191,7 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         dismiss(animated: true, completion: nil)
     }
     
- 
-    
-    
+
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type {
@@ -211,10 +236,62 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
 extension HomePetViewController: MyTableviewCellDelegate {
     func didTapMyBtn(sender: HomesCell) {
         
+        
+        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let indexPath = self.tableView.indexPath(for: sender) else {return }
         let controller = storyboard.instantiateViewController(withIdentifier: PETSDATADETAILVC) as! PetsDataDetailViewController
         controller.petDiarys = petDiarys[indexPath.row]
         self.navigationController?.pushViewController(controller, animated: true)
     }
+}
+
+extension HomePetViewController: GADBannerViewDelegate {
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return bannerView
+    }
+
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 1
+        }else{
+            return bannerView.frame.height
+        }
+       
+    }
+    
+    
+    //接收到廣告之後才將橫幅廣告添加到視圖層次結構
+     func bannerViewDidReceiveAd(_ bannerView: GADBannerView) {
+        addBannerViewToView(bannerView)
+    }
+     
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        print("Banner loaded successfully")
+        tableView.tableFooterView?.frame = bannerView.frame
+        tableView.tableFooterView = bannerView
+    }
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+        print("Fail to receive ads")
+        print(error)
+    }
+    
+    
+    //以下是廣告條件
+  
+    func bannerView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
+      print("bannerView:didFailToReceiveAdWithError: \(error.localizedDescription)")
+    }
+
+    func bannerViewDidRecordImpression(_ bannerView: GADBannerView) {
+      print("bannerViewDidRecordImpression")
+    }
+
+    func bannerViewWillPresentScreen(_ bannerView: GADBannerView) {
+      print("bannerViewWillPresentScreen")
+    }
+
+
 }

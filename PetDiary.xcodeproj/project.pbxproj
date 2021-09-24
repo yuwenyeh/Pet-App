@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F67D0C126FC2C6500E6FA68 /* GoogleMobileAds.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F67D0C026FC2C6500E6FA68 /* GoogleMobileAds.xcframework */; };
+		0F67D0CB26FD70D700E6FA68 /* GoogleAds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F67D0CA26FD70D700E6FA68 /* GoogleAds.swift */; };
 		0FAFF46E26E84F0400888BE7 /* HomesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF46C26E84F0400888BE7 /* HomesCell.swift */; };
 		0FAFF46F26E84F0400888BE7 /* HomesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FAFF46D26E84F0400888BE7 /* HomesCell.xib */; };
 		0FAFF47326E889AA00888BE7 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FAFF47226E889AA00888BE7 /* CardView.swift */; };
@@ -78,6 +79,7 @@
 
 /* Begin PBXFileReference section */
 		0F67D0C026FC2C6500E6FA68 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
+		0F67D0CA26FD70D700E6FA68 /* GoogleAds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAds.swift; sourceTree = "<group>"; };
 		0FAFF46C26E84F0400888BE7 /* HomesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomesCell.swift; sourceTree = "<group>"; };
 		0FAFF46D26E84F0400888BE7 /* HomesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomesCell.xib; sourceTree = "<group>"; };
 		0FAFF47226E889AA00888BE7 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
@@ -171,6 +173,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F67D0C926FD70A900E6FA68 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				0F67D0CA26FD70D700E6FA68 /* GoogleAds.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		0FAFF47A26EC8B3900888BE7 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				D8FDC4C626D1D15C00EA1026 /* cell */,
+				0FAFF46D26E84F0400888BE7 /* HomesCell.xib */,
+				0FAFF48026EC9D2000888BE7 /* PetwCategoryCell.xib */,
 				D88DBA4126CFFB9F0009BAE9 /* LaunchScreen.storyboard */,
 				D88DBA3926CFFB9E0009BAE9 /* Main.storyboard */,
 				D88EF2BF26D453F800B7C9D7 /* Home.storyboard */,
@@ -293,6 +305,7 @@
 		D88DBA3226CFFB9E0009BAE9 /* PetDiary */ = {
 			isa = PBXGroup;
 			children = (
+				0F67D0C926FD70A900E6FA68 /* Service */,
 				0FCACF6426E0DCFE0090024D /* GoogleService-Info.plist */,
 				D8FDC4D326D27F7E00EA1026 /* Model */,
 				D8891A8926D06B9E00355F21 /* View */,
@@ -334,9 +347,7 @@
 				0FCACF5326E0CB840090024D /* PetsDataDetailCell.swift */,
 				0FCACF5526E0CF450090024D /* PetsDetailMessageLabel.swift */,
 				0FAFF46C26E84F0400888BE7 /* HomesCell.swift */,
-				0FAFF46D26E84F0400888BE7 /* HomesCell.xib */,
 				0FAFF47F26EC9D2000888BE7 /* PetwCategoryCell.swift */,
-				0FAFF48026EC9D2000888BE7 /* PetwCategoryCell.xib */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -641,6 +652,7 @@
 				0FCACF5426E0CB840090024D /* PetsDataDetailCell.swift in Sources */,
 				0FCACF3026D49DB50090024D /* PettypeViewController.swift in Sources */,
 				0FCACF2B26D39FA30090024D /* AlertController +Extension.swift in Sources */,
+				0F67D0CB26FD70D700E6FA68 /* GoogleAds.swift in Sources */,
 				D8FDC4D226D25D8900EA1026 /* PetNameCell.swift in Sources */,
 				D88EF2C326D457BF00B7C9D7 /* PetTextFieldVC.swift in Sources */,
 				0FCACF3226D4A7600090024D /* HomePetViewController.swift in Sources */,

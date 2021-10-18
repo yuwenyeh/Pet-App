@@ -1,0 +1,72 @@
+
+/* Class = "UITableViewSection"; headerTitle = "  "; ObjectID = "1Nt-Tf-i9q"; */
+"1Nt-Tf-i9q.headerTitle" = "  ";
+
+/* Class = "UITabBarItem"; title = "紀錄"; ObjectID = "6ni-zV-pPq"; */
+"6ni-zV-pPq.title" = "紀錄";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Qjd-DO-Oud"; */
+"Qjd-DO-Oud.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "輸入"; ObjectID = "TY4-Ty-Owv"; */
+"TY4-Ty-Owv.title" = "輸入";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Wys-dd-a13"; */
+"Wys-dd-a13.text" = "Label";
+
+/* Class = "UITabBarItem"; title = "日期"; ObjectID = "YYN-jf-faY"; */
+"YYN-jf-faY.title" = "日期";
+
+/* Class = "UIBarButtonItem"; title = "新增寵物資料"; ObjectID = "Yvh-zn-cTB"; */
+"Yvh-zn-cTB.title" = "新增寵物資料";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "aaK-7R-Wt9"; */
+"aaK-7R-Wt9.title" = " ";
+
+/* Class = "UILabel"; text = "撰寫紀錄"; ObjectID = "bDw-g8-0MY"; */
+"bDw-g8-0MY.text" = "撰寫紀錄";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "dNC-ut-1Ht"; */
+"dNC-ut-1Ht.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "輸入"; ObjectID = "ePJ-4K-vRl"; */
+"ePJ-4K-vRl.title" = "輸入";
+
+/* Class = "UISegmentedControl"; f7E-O5-jGb.segmentTitles[0] = "輸入"; ObjectID = "f7E-O5-jGb"; */
+"f7E-O5-jGb.segmentTitles[0]" = "輸入";
+
+/* Class = "UISegmentedControl"; f7E-O5-jGb.segmentTitles[1] = "詳情"; ObjectID = "f7E-O5-jGb"; */
+"f7E-O5-jGb.segmentTitles[1]" = "詳情";
+
+/* Class = "UISegmentedControl"; f7E-O5-jGb.segmentTitles[2] = "測試"; ObjectID = "f7E-O5-jGb"; */
+"f7E-O5-jGb.segmentTitles[2]" = "測試";
+
+/* Class = "UISegmentedControl"; f7E-O5-jGb.segmentTitles[3] = "編輯"; ObjectID = "f7E-O5-jGb"; */
+"f7E-O5-jGb.segmentTitles[3]" = "編輯";
+
+/* Class = "UILabel"; text = "分類設定體重紀錄事項"; ObjectID = "gjb-1S-33c"; */
+"gjb-1S-33c.text" = "分類設定體重紀錄事項";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "haG-Vz-Par"; */
+"haG-Vz-Par.text" = "Label";
+
+/* Class = "UILabel"; text = "附近獸醫院"; ObjectID = "mjr-P4-dX2"; */
+"mjr-P4-dX2.text" = "附近獸醫院";
+
+/* Class = "UILabel"; text = "歷史紀錄"; ObjectID = "oRa-Qu-EKi"; */
+"oRa-Qu-EKi.text" = "歷史紀錄";
+
+/* Class = "UILabel"; text = "所有寵物清單"; ObjectID = "v2P-dF-RLm"; */
+"v2P-dF-RLm.text" = "所有寵物清單";
+
+/* Class = "UISegmentedControl"; vCM-64-cRk.segmentTitles[0] = "First"; ObjectID = "vCM-64-cRk"; */
+"vCM-64-cRk.segmentTitles[0]" = "First";
+
+/* Class = "UISegmentedControl"; vCM-64-cRk.segmentTitles[1] = "Second"; ObjectID = "vCM-64-cRk"; */
+"vCM-64-cRk.segmentTitles[1]" = "Second";
+
+/* Class = "UITabBarItem"; title = "獸醫院"; ObjectID = "wWZ-uv-lOy"; */
+"wWZ-uv-lOy.title" = "獸醫院";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xHI-f4-LaC"; */
+"xHI-f4-LaC.text" = "Label";

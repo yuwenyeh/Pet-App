@@ -20,7 +20,6 @@ class PetSetUpTableVC: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-      
         return 5
     }
 

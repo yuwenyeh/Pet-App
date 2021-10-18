@@ -27,6 +27,9 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print(UserDefaults.standard.dictionaryRepresentation())
+        print(NSHomeDirectory())
+        
         //廣告view要先擺上面
         bannerView = GADBannerView(adSize: kGADAdSizeBanner)
         addBannerViewToView(bannerView)
@@ -44,6 +47,7 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
         appdelegate()
         addtableview()
         
+ 
     }
     
     func addBannerViewToView(_ bannerView: GADBannerView) {
@@ -236,8 +240,6 @@ class HomePetViewController: UITableViewController,NSFetchedResultsControllerDel
 extension HomePetViewController: MyTableviewCellDelegate {
     func didTapMyBtn(sender: HomesCell) {
         
-        
-        
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let indexPath = self.tableView.indexPath(for: sender) else {return }
         let controller = storyboard.instantiateViewController(withIdentifier: PETSDATADETAILVC) as! PetsDataDetailViewController
@@ -253,11 +255,11 @@ extension HomePetViewController: GADBannerViewDelegate {
     }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 0 {
-            return 1
-        }else{
+//        if section == 0 {
+//            return 1
+//        }else{
             return bannerView.frame.height
-        }
+       // }
        
     }
     
@@ -269,8 +271,14 @@ extension HomePetViewController: GADBannerViewDelegate {
      
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
         print("Banner loaded successfully")
-        tableView.tableFooterView?.frame = bannerView.frame
-        tableView.tableFooterView = bannerView
+        
+        let translateTransform = CGAffineTransform(translationX: 0, y: +bannerView.bounds.size.height)
+        bannerView.transform = translateTransform
+        
+        UIView.animate(withDuration: 0.5) {
+            bannerView.transform = CGAffineTransform.identity
+        }
+
     }
     
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: Error) {
